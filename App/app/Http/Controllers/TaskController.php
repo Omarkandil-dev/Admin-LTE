@@ -51,11 +51,13 @@ class TaskController extends Controller
 
 
     public function filtrer(Request $request){
-        $data = DB::table('tasks')->select()
-        ->where('created_at','>=', $request->datedebut)
-        ->where('created_at','<=', $request->datefin)
-        ->get();
-        return view('index', compact("data"));;
+        // $data = DB::table('tasks')
+        // ->where('created_at','>=', $request->datedebut)
+        // ->where('created_at','<=', $request->datefin)->orderBy('id','asc')->paginate(5);
+        $data = Task::where('created_at','>=', $request->datedebut)
+        ->where('created_at','<=', $request->datefin)->paginate(5);
+        // return dd($data);
+        return view('index', compact("data"));
     }
 
 }
