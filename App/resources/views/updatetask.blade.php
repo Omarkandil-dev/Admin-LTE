@@ -10,7 +10,7 @@
   
     <form action="/actionupdate/{{ $updatetask[0]->id }}" method="POST">
         @csrf
-    <input type="text" name="task" value="{{ $updatetask[0]->task }}">
+    <input type="text" name="name" value="{{ $updatetask[0]->name }}">
     <button>Envoyer</button>
 </form>
     

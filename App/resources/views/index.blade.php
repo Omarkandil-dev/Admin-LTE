@@ -26,7 +26,7 @@
     @foreach ($data as $row)
     <tr>
         <td>{{ $row->id }}</td>
-        <td>{{ $row->task }}</td>
+        <td>{{ $row->name }}</td>
         <td><a href="/updatetask/{{ $row->id }}">update</a></td>
         <td><a href="/delete/{{ $row->id }}">Delete</a></td>
     </tr>

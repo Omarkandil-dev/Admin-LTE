@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('index', [TaskController::class,'select'] );
-Route::get('/add', [TaskController::class,'Add'] );
-Route::post('/addTask', [TaskController::class,'AddTask'] );
-Route::get('/delete/{id}', [TaskController::class,'deleteTask'] );
-Route::get('/updatetask/{id}', [TaskController::class,'updatetask'] );
-Route::post('/actionupdate/{id}', [TaskController::class,'actionupdate'] );
-Route::get('/filtrer', [TaskController::class,'filtrer'] );
+
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+
+    Route::get('/home', function () {
+        return view('home');
+    });
+});
+
+
+// Crud promotion
+Route::get('index', [PromotionController::class,'select'] );
+Route::get('/add', [PromotionController::class,'Add'] );
+Route::post('/addTask', [PromotionController::class,'AddTask'] );
+Route::get('/delete/{id}', [PromotionController::class,'deleteTask'] );
+Route::get('/updatetask/{id}', [PromotionController::class,'updatetask'] );
+Route::post('/actionupdate/{id}', [PromotionController::class,'actionupdate'] );
+Route::get('/filtrer', [PromotionController::class,'filtrer'] );

@@ -9,7 +9,7 @@
 <body>
     <form action="/addTask" method="POST">
         @csrf
-    <input type="text" name="task" placeholder="task">
+    <input type="text" name="name" placeholder="task">
     <button>Envoyer</button>
 </form>
     
