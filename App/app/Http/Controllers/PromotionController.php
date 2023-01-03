@@ -11,7 +11,7 @@ class PromotionController extends Controller
     
     public function select(){
         $data = Promotion::orderBy('id','asc')->paginate(5);
-        return view ('index', compact("data"));
+        return view ('promotions.index', compact("data"));
     }
 
     public function add(){
