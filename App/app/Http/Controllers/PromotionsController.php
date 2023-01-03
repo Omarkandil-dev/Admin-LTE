@@ -15,7 +15,6 @@ class PromotionsController extends Controller
     public function index()
     {
         //
-
         $promotions = Promotion::all();
         return view('promotions.index', compact('promotions'));
     }
@@ -25,9 +24,12 @@ class PromotionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+
+        return view('promotions.create');
+
     }
 
     /**
@@ -39,6 +41,10 @@ class PromotionsController extends Controller
     public function store(Request $request)
     {
         //
+        $promotion = new Promotion();
+        $promotion->name = $request->name;
+        $promotion->save();
+        return redirect()->route('promotions.index');
     }
 
     /**
@@ -61,6 +67,8 @@ class PromotionsController extends Controller
     public function edit($id)
     {
         //
+        $promotion = Promotion::where('id', $id)->first();
+        return view('promotions.edit', compact('promotion'));
     }
 
     /**
@@ -70,19 +78,29 @@ class PromotionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function update(Request $request, $id)
     {
         //
+        $promotion = Promotion::where('id', $id)->first();
+        $promotion->name = $request->name;
+        $promotion->save();
+        return redirect()->route('promotions.index');
     }
-
+  
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         //
+        $promotion = Promotion::find($id); 
+        $promotion->delete();
+        return redirect()->route('promotions.index');
     }
 }

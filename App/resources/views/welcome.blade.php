@@ -13,7 +13,7 @@
                 <div class="card-header">
                     <h2>Welcome Back</h2>
                 </div>
-                <div class="card-body">
+                <div class="card-body"> 
                     @guest 
                         <a href="{{ url('/login') }}" class="btn btn-outline-primary">
                             login
