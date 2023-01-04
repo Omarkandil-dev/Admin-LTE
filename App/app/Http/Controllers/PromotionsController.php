@@ -27,7 +27,6 @@ class PromotionsController extends Controller
     public function create(Request $request)
     {
         //
-
         return view('promotions.create');
 
     }
@@ -100,7 +99,7 @@ class PromotionsController extends Controller
     {
         //
         $promotion = Promotion::find($id); 
-        $promotion->delete();
+        $promotion->destroy();
         return redirect()->route('promotions.index');
     }
 }
